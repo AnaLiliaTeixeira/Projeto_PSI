@@ -1,0 +1,14 @@
+<div *ngIf="getCookie()" style="display: flex; flex-direction: column;">
+  <app-top-bar style="order: 1;"></app-top-bar>
+  <app-body style="order: 2;"></app-body>
+  <app-footer style="order: 3;"></app-footer>
+</div>
+<div *ngIf="!getCookie()">
+  <app-error-page></app-error-page>
+</div>
+<div *ngFor="let notification of notifications$ | async">
+  <div class="alert">
+    {{ notification.message }}
+    <button (click)="removeNotification(loggedInUser._id, notification._id)">Close</button>
+  </div>
+</div>

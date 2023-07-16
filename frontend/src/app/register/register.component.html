@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="logo">
+
+        <a><img class="logo" src="https://drive.google.com/uc?id=1Tunft7SY63llElSmb8P3I4uPyqNFcTyh"></a>
+    </div>
+    <div class="container">
+        <h1 id="welcome">Welcome</h1>
+        <div class="container1" id="container1">
+            <div id="registar" class="registerr">
+
+                <label for="username"><b>Username</b></label>
+                <input placeholder="Enter Username" [(ngModel)]="username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" [(ngModel)]="password" required>
+
+                <input type="password" placeholder="Enter Password Again" [(ngModel)]="passwordCheck" required>
+                <button type="button" (click)="goToLogin()">Back to Login</button> 
+                <button type="button" (click)="tryRegist()">Regist</button>
+                <p id="message"></p>
+            </div>
+
+        </div>
+
+
+        <div class="container2" id="container2">
+            <div class="register_requirements">
+                <h3>Username</h3>
+
+
+                <i id="userAlf" class="fa fa-genderless"></i> Can only have alphanumeric characters<br>
+                <i id="userMin" class="fa fa-genderless"></i> Must be three characters minimum<br>
+                <i id="userUnic" class="fa fa-genderless"></i> Must be unique on the platform<br>
+
+
+
+                <h3>Password</h3>
+
+
+                <i id="passOito" class="fa fa-genderless"></i> Eight or more characters <br>
+                <i id="passMai" class="fa fa-genderless"></i> At least one uppercase letter<br>
+                <i id="passMin" class="fa fa-genderless"></i> A lowercase letter<br>
+                <i id="passAlg" class="fa fa-genderless"></i> A number<br>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

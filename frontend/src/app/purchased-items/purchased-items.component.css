@@ -1,0 +1,47 @@
+/* Definir estilos para o container */
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 17%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+  
+  /* Definir estilos para o select */
+  #sort-select {
+    background-color: #fff;
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    width: 160px;
+  }
+  
+  /* Definir estilos para os botões */
+  .sort-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sort-button:focus {
+    outline: none;
+  }
+  
+  .sort-button i {
+    font-size: 0.8rem;
+  }
+  
+  .active-up i::before {
+    content: '\f077';
+    color: #4CAF50;
+  }
+  
+  .active-down i::before {
+    content: '\f078';
+    color: #4CAF50;
+  }

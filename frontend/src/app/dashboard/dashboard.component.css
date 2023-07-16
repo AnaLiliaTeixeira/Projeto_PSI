@@ -1,0 +1,21 @@
+.alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffc107;
+    color: #fff;
+    text-align: center;
+  }
+  button:focus {
+    background-color: purple; /* Defina a cor desejada */
+  }
+  .notification {
+    margin-bottom: 10px;
+  }
+
+app-body {
+  background-color: rgb(236, 239, 236);
+}
+  

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="logo">
+
+        <a ><img class="logo" src="https://drive.google.com/uc?id=1Tunft7SY63llElSmb8P3I4uPyqNFcTyh"></a>
+    </div>
+    <div class="container">
+        
+        <h1 id="welcome">Welcome</h1>
+        <div id="loginId" class="loginn">
+            <label for="username"><b>Username</b></label>
+            <input placeholder="Enter Username" [(ngModel)]="username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" [(ngModel)]="password" required>
+            <div class="button-container">
+                <button type="button" (click)="tryLogin()">Login</button>
+
+                <button type="button" (click)="goToRegistar()">Regist</button>
+            </div>
+            <p id="message"></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

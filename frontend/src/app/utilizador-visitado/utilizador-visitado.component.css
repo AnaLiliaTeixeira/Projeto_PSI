@@ -1,0 +1,417 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #e8f5ff;
+  min-height: 100vh;
+  font-family: Arial;
+}
+
+.navbar-top {
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0px 4px 8px 0px grey;
+  height: 70px;
+}
+
+.title {
+  font-family: 'Dancing Script', cursive;
+  padding-top: 15px;
+  position: absolute;
+  left: 45%;
+}
+
+.navbar-top ul {
+  float: right;
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 18px 50px 0 40px;
+}
+
+.navbar-top ul li {
+  float: left;
+}
+
+.navbar-top ul li a {
+  color: #333;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.icon-count {
+  background-color: #ff0000;
+  color: #fff;
+  float: right;
+  font-size: 11px;
+  left: -25px;
+  padding: 2px;
+  position: relative;
+}
+
+.sidenav {
+  background-color: #fff;
+    color: #333;
+    height: 84.7%;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    position: absolute;
+    top: 102px;
+    width: 20vh;
+}
+
+.profile {
+  margin-bottom: 20px;
+  margin-top: -12px;
+  text-align: center;
+}
+
+.profile img {
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 1px grey;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+.job {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.url,
+hr {
+  text-align: center;
+}
+
+.url hr {
+  margin-left: 20%;
+  width: 60%;
+}
+
+.url a {
+  color: #818181;
+  display: block;
+  font-size: 20px;
+  margin: 10px 0;
+  padding: 6px 8px;
+  text-decoration: none;
+}
+
+.url a:hover,
+.url .active {
+  background-color: #e8f5ff;
+  border-radius: 28px;
+  color: #000;
+  margin-left: 14%;
+  width: 65%;
+}
+
+.main {
+  margin-top: 2%;
+  margin-left: 29%;
+  font-size: 28px;
+  padding: 0 10px;
+  width: 58%;
+}
+
+.main h2 {
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.main .card {
+  background-color: #fff;
+  border-radius: 18px;
+  box-shadow: 1px 1px 8px 0 grey;
+  width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+  padding: 20px 0 20px 50px;
+}
+
+.identity-card {
+  width: 830px;
+  height: 30px !important;
+}
+
+
+.list {
+  width: 499px;
+  height: 500px !important;
+}
+
+.card-body {
+  text-align: left;
+  margin-left: -30px;
+}
+
+.nome {
+  font-size: 22px;
+}
+
+.main .card table {
+  text-align: center;
+  border: none;
+  font-size: 16px;
+  height: 90%;
+  width: 90%;
+}
+
+
+.edit {
+  position: absolute;
+  color: #e7e7e8;
+  right: 23%;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  padding: 0.4em 0.8em;
+  border-radius: 0.3rem;
+  border: 1px solid #007bff;
+  color: #007bff;
+  background-color: #fff;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  width: 200px;
+}
+
+.badge:hover {
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+
+table {
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+td,
+th {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.col-game {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.col-date {
+  color: #6c757d;
+}
+
+.col-date svg {
+  fill: #6c757d;
+}
+
+tbody tr:hover {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  transition: all 0.2s ease-in-out;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+select {
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 3px solid black;
+  color: black;
+  background-color: transparent;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.up-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.down-button {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* PARTE HTML DOS SEGUIDORES */
+
+.follow-container,
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.follow-list,
+.wishlist-list {
+  width: 100%;
+  max-width: 650px;
+}
+
+
+.follow-item,
+.wishlist-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.follow-item:hover,
+.wishlist-item:hover {
+  background-color: #f5f5f5;
+}
+
+.follow-info {
+  display: flex;
+  align-items: center;
+}
+
+.follow-username {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.follow-followed {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #228b22;
+  margin-right: 10px;
+}
+
+.follow-item.following .follow-info {
+  color: #228b22;
+}
+
+.follow-item.not-following .follow-info {
+  color: #000;
+}
+
+.toggle-users-button {
+  background: linear-gradient(to bottom, #3f51b5 0%, #303f9f 100%);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.toggle-users-button:hover {
+  background: linear-gradient(to bottom, #303f9f 0%, #3f51b5 100%);
+}
+
+.follow-item .no-followers-message,
+.wishlist-item .no-wishlist-items {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* PARTE HTML DA WISHLIST */
+
+.game_detail {
+  margin-left: 5%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  display: flex;
+  position: relative;
+}
+
+.game_detail #botao-favorito {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.game_detail img {
+  border-radius: 5%;
+  width: 15%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+.game_name {
+  margin-left: 1%;
+}
+
+.game_name:hover {
+  color: rgb(231, 167, 49);
+  cursor: pointer;
+}
+
+.card.list {
+  height: 60%; /* altura fixa */
+  overflow-y: auto; /* rolagem vertical */
+}
+
+
+#botao-favorito {
+  border: none;
+  background-color: transparent;
+  font-size: 40px;
+  color: #333;
+  cursor: pointer;
+  margin-left: 60%;
+}
+
+#botao-favorito:hover {
+  color: red;
+}
+
+.wishlist-list {
+  margin-right: 5%;
+}

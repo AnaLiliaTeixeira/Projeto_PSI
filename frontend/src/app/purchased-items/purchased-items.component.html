@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+  <div *ngIf="getCookie()==true"> 
+<head>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <app-top-bar></app-top-bar>
+  <div class="sort-container">
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select">
+      <option value="title">Title</option>
+      <option value="date">Date Purchased</option>
+    </select>
+    <button class="sort-button up-button" ><i class="fa fa-arrow-up"></i></button>
+    <button class="sort-button down-button" ><i class="fa fa-arrow-down"></i></button>
+  </div>
+</body>
+</div> 
+<div *ngIf="getCookie()==false">
+  <app-error-page></app-error-page>
+</div> 
+</html>

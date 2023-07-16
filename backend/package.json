@@ -1,0 +1,27 @@
+{
+  "name": "projeto_psi11",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=projeto_psi11:*; npm run devstart"
+  },
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^14.1.0",
+    "async": "^3.2.4",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "devmon": "0.0.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.10.5",
+    "morgan": "~1.9.1",
+    "owl.carousel": "^2.3.4",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

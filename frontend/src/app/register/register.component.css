@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, black, gray);
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .container1 {
+    margin-right: 0.25cm;
+
+
+  }
+
+  .container2 {
+    margin-left: 0.25cm;
+
+
+  }
+  
+  .registerr{
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+    text-align: center;
+    width: 400px;
+    height: 350px;
+  }
+
+  .register_requirements{
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px gray;
+    text-align: left;
+    width: 400px;
+    height: 350px;
+  }
+
+  h3{
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: 30px;
+    color: black;
+  }
+
+
+
+  
+  label {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+  }
+  
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+
+  button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 5px;
+    width: 100%;
+    margin-left: 1px;
+    margin-right: 1px;
+    max-width: 150px;
+  }
+  
+   
+  h1 {
+    color: white;
+    display: none;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bold;
+    font-size:150px;
+  }
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    border-radius: 20px;
+  }

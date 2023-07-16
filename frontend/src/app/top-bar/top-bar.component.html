@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+	
+	<nav>
+		<ul>
+			<li><a routerLink="/dashboard" ><img class="logo" src="https://drive.google.com/uc?id=1Tunft7SY63llElSmb8P3I4uPyqNFcTyh"></a></li>
+			<li>
+				<div id="search-component">
+					<input #searchBox id="search-box" placeholder="Search for a game" [(ngModel)]="searchTerm"
+						(keydown.enter)="redirect(searchTerm)" />
+				</div>
+			</li>
+			<li (onclick) = "setShowMessage(false)"><a routerLink="/wishlist/{{this.loggedUser}}"><img src="https://drive.google.com/uc?id=1ZlWTguEjKSxgF-Kf-f4-_vRLdm5S428M" ></a> </li>
+			<li>
+				<a routerLink="/shoppingcart" id="cart-button" >
+					<span class="cart-counter">{{ getCartItemCount() }}</span>
+					<i class="fas fa-shopping-cart" style="color: #ffffff; font-size: 40px;"></i>
+					
+				</a>			
+			</li>
+			<li><button (click)="toggleDropdown()"	class="menu-button"><a class="dropdown-toggle" >
+				  <img src="{{(user && user.imageProfile) ? user.imageProfile : 'https://drive.google.com/uc?id=1fPzNPzfZYGO-0DVo1xi2bi7QbyItNaOQ'}}">
+				</a></button>		
+				<ul class="dropdown-menu" *ngIf="isDropdownOpen" (click)="closeDropdown()">
+				  <li><a routerLink="/user">Profile</a></li>
+				  <li><a routerLink="/user">Purchased Games</a></li>
+				  <li><a routerLink="/user">Followers</a></li>
+				  <li><a routerLink="/user">Who I Follow</a></li>
+				  <li><button (click)="logout()" class="menu-button"><a  >Log out</a></button></li>
+				</ul>
+			  </li>
+		</ul>
+	</nav>
+</body>
+</html>

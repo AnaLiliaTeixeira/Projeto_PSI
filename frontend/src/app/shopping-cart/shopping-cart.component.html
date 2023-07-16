@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <div *ngIf="getCookie()==true"> 
+       
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<app-top-bar></app-top-bar>
+
+<body>
+    
+    <div *ngIf="notificationMessage" class="notification">{{ notificationMessage }}</div>
+    <div *ngIf="showAlertMessage" class="alert">
+        This game cannot be selected as a gift.
+      </div>
+        <div class="CartContainer">
+   	   <div class="Header">
+   	   	<h3 class="Heading">Game Shopping Cart</h3>
+   	   </div>
+
+   	   <div class="Cart-Items">
+            <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+                Your cart is empty. Add items to proceed to checkout.
+            </div>
+            <div *ngFor="let item of cartItems" class="item">
+                <div class="image-box">
+                    <img [src]="getUrl(item)" alt="Game Image" style="height: 120px;" >
+                </div>
+                <div class="about">
+                    <h1 class="title">{{ item.gameTitle }}</h1>
+                    <p class="type">{{ item.gameType }}</p>
+                </div>
+                <div class="counter">
+                    <div class="btn" tabindex="0" (keydown.enter)="addQuantity(item.game)" (keydown.space)="addQuantity(item.game)" (click)="addQuantity(item.game)" >+</div>
+                    <div class="count">{{  getCartItem(item) }}</div>
+                    <div class="btn" tabindex="0" (keydown.enter)="removeQuantity(item.game)" (keydown.space)="removeQuantity(item.game)" (click)="removeQuantity(item.game)">-</div>
+                </div>
+                <div class="prices">
+                    <div class="amount">{{ getCartItem(item) * getPrice(item) | number:'1.2-2' }}</div>
+                </div>
+                <button class="button" (click)="showGiftForm = true; selectGift(item)" [disabled]="cartItems.length === 0" *ngIf="!item.isGift">
+                    Mark as Gift
+                </button>
+                <button class="button" (click)="showGiftForm = true; selectGift(item)" [disabled]="cartItems.length === 0" *ngIf="item.isGift">
+                    Marked as Gift
+                </button>
+            </div>
+            
+            <div class="modal" [class.show-modal]="showGiftForm" (click)="closeModal($event)">
+                <div class="modal-content" (click)="$event.stopPropagation()">
+                    <div *ngIf="showGiftForm && cartItems.length > 0" class="gift-form">
+                        <div>
+                            <label for="recipient">Recipient:</label>
+                            <select id="recipient" name="recipient" [(ngModel)]="selectedRecipientForGift">
+                                <option *ngFor="let user of userlist" [value]="user._id">{{ user.name }}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="button" (click)="markAsGift(selectedItemForGift); showGiftForm = false" [disabled]="cartItems.length === 0">Mark as Gift</button>
+                            <button class="button" (click)="cancelGiftSelection(); showGiftForm = false">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr> 
+        <h5 class="Action" tabindex="0" (keydown.enter)="clearCart()" (keydown.space)="clearCart()" (click)="clearCart()">Remove all</h5>
+        <div class="checkout">
+            <div class="total">
+                <div>
+                    <div class="Subtotal">Sub-Total</div>
+                    <div class="items">{{ getCartItemCount() }} items</div>
+                </div>
+                <div class="total-amount">{{ total | number:'1.2-2' }}</div>
+            </div>
+            <button class="button" (click)="goToCheckout()" [disabled]="cartItems.length === 0">Checkout</button>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
+</div> 
+<div *ngIf="getCookie()==false">
+    <app-error-page></app-error-page>
+</div> 
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <div *ngIf="getCookie()==true"> 
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<app-top-bar></app-top-bar>
+
+<body>
+  <h2>Checkout</h2>
+  <div *ngIf="showAlertMessage" class="alert">
+    You have sent a gift.
+  </div>
+  <div class="container" *ngIf="!paymentSuccess">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="nif">NIF</label>
+        <input type="text" id="nif" class="form-control" name="nif" ngModel required
+        pattern="[0-9]*" title="Please enter only numbers">
+            <div *ngIf="nifError" class="error-message"><strong>Please enter your NIF.</strong></div>
+            <div *ngIf="f.controls['nif'] && f.controls['nif'].invalid && (f.controls['nif'].dirty || f.controls['nif'].touched)">
+              <div *ngIf="f.controls['nif'].errors?.['required']" class="error-message"><strong>Please enter your NIF.</strong></div>
+              <div *ngIf="f.controls['nif'].errors?.['pattern']" class="error-message"><strong>Please enter only numbers.</strong></div>
+                 </div>
+          </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" class="form-control" name="address" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" class="form-control" name="paymentMethod" [(ngModel)]="selectedMethod" required>
+          <option value="" disabled selected>Select payment method</option>
+          <option *ngFor="let method of paymentMethods" [value]="method">{{method}}</option>
+        </select>
+        <div *ngIf="!selectedMethod && f.submitted" class="error-message"><strong>Please select a payment method.</strong></div>
+        <div *ngIf="getTotal() > 0">
+          <h4>--Order Summary--</h4>
+          <p>Total Amount: {{ getTotal() | number:'1.2-2' }}</p>
+        </div>
+        <div *ngIf="paymentError" class="error-message">
+          <p><strong>{{ errorMessage }}</strong></p>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Pay</button>
+    </form>
+  </div>
+
+  <div class="paymentSuc" *ngIf="paymentSuccess">
+    <h3>Payment successful!</h3>
+    <p>Thank you for your purchase!</p>
+    <button (click)="goToDashboard()" class="btn btn-primary">Ok</button>
+  </div>
+</body>
+<app-footer></app-footer>
+
+</div>
+<div *ngIf="getCookie()==false">
+  <app-error-page></app-error-page>
+</div> 
+</html>>

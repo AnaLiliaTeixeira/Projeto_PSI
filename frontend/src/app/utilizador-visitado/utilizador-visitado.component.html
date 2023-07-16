@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<div *ngIf="getCookie()==true">
+
+
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <app-top-bar></app-top-bar>
+
+    <!-- Sidenav -->
+    <div class="sidenav">
+      <div class="profile">
+        <img
+          src="{{(user && user.imageProfile) ? user.imageProfile : 'https://drive.google.com/uc?id=1fPzNPzfZYGO-0DVo1xi2bi7QbyItNaOQ'}}"
+          alt="" width="100" height="100">
+      </div>
+
+
+
+      <div class="sidenav-url">
+        <div class="url" (click)="selectedSection='info'" tabindex="0" (keydown.enter)="selectedSection='info'"
+          (keydown.space)="selectedSection='info'">
+          <a>Profile</a>
+          <hr align="center">
+        </div>
+        <div class="url" (click)="selectedSection='games'" tabindex="0" (keydown.enter)="selectedSection='games'"
+          (keydown.space)="selectedSection='games'">
+          <a>Purchased Games</a>
+          <hr align="center">
+        </div>
+        <div class="url" (click)="selectedSection='followers'" tabindex="0"
+          (keydown.enter)="selectedSection='followers'" (keydown.space)="selectedSection='followers'">
+          <a>Followers</a>
+          <hr align="center">
+        </div>
+        <div class="url" (click)="selectedSection='follow'" tabindex="0" (keydown.enter)="selectedSection='follow'"
+          (keydown.space)="selectedSection='follow'">
+          <a>Who Does He Follow</a>
+          <hr align="center">
+        </div>
+        <div class="url" (click)="selectedSection='wishlist'" tabindex="0" (keydown.enter)="selectedSection='wishlist'"
+          (keydown.space)="selectedSection='wishlist'">
+          <a>Wishlist</a>
+          <hr align="center">
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+
+      <!-- Informações de perfil -->
+      <h2 *ngIf="selectedSection === 'info'">IDENTITY</h2>
+      <div class="card identity-card" *ngIf="selectedSection === 'info'">
+        <div class="card-body">
+          <tbody>
+            <td class="nome"><strong>Username: </strong> {{user?.name }}</td>
+          </tbody>
+        </div>
+        <div class="modal" *ngIf="showUsernameModal">
+          <div class="modal-content">
+            <form (ngSubmit)="onSubmit()">
+              <label for="newUsername">New Username:</label>
+              <input type="text" name="newUsername" [(ngModel)]="newUsername">
+              <button type="submit">Save</button>
+              <button type="button" (click)="closeUsernameModal()">Cancel</button>
+              <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <h2 *ngIf="selectedSection === 'games'">PURCHASED GAMES</h2>
+      <div class="card list" *ngIf="selectedSection === 'games'">
+        <div class="card-body">
+          <div class="sort-container">
+            <label for="sort-select">Sort by: </label>
+            <select id="sort-select" (change)="onSortChange($event)">
+              <option value="title">Title</option>
+              <option value="date">Date Purchased</option>
+            </select>
+            <button class="sort-button up-button" (click)="onSortUp()">
+              <i class="fa fa-arrow-up"></i>
+            </button>
+            <button class="sort-button down-button" (click)="onSortDown()">
+              <i class="fa fa-arrow-down"></i>
+            </button>
+          </div>
+          <div style="margin-left: 15px;">
+            <table>
+              <thead>
+                <tr>
+                  <th class="align-middle"><strong>Game</strong></th>
+                  <th class="align-middle"><strong>Price</strong></th>
+                  <th class="align-middle"><strong>Date Purchased</strong></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="buys && buys.length > 0; else noBuys">
+                <tr *ngFor="let buy of buys">
+                  <td class="align-middle">
+                    <span class="badge badge-primary" tabindex="0" (keydown.enter)="verDetalhes(buy.game._id)"
+                      (keydown.space)="verDetalhes(buy.game._id)" (click)="verDetalhes(buy.game._id)">
+                      {{ buy.game.name }}
+                    </span>
+                  </td>
+                  <td class="align-middle col-price">{{ buy.game.price }}</td>
+                  <td class="align-middle col-date">{{ formatDate(buy.date) }}</td>
+                </tr>
+              </tbody>
+              <ng-template #noBuys>He hasn't bought any items yet.</ng-template>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <h2 *ngIf="selectedSection === 'followers'">HIS FOLLOWERS</h2>
+      <div class="card list" *ngIf="selectedSection === 'followers'">
+        <div class="card-body">
+          <div class="follow-container">
+            <div class="follow-list">
+              <div class="follow-item" *ngIf="followersList.length === 0">
+                <p class="no-followers-message">He has no followers yet.</p>
+              </div>
+              <div class="follow-item" *ngFor="let user of followersList">
+                <div class="follow-info">
+                  <span class="follow-username">{{ user.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 *ngIf="selectedSection === 'follow'">WHO DOES HE FOLLOW</h2>
+      <div class="card list" *ngIf="selectedSection === 'follow'">
+        <div class="card-body">
+          <div class="follow-container">
+            <div class="follow-list">
+              <div class="follow-item" *ngIf="followingList.length === 0">
+                <p class="no-followers-message">He is not following anyone yet.</p>
+              </div>
+              <div class="follow-item" *ngFor="let user of (showAllUsers ? userList : followingList)">
+                <div class="follow-info">
+                  <span class="follow-username">{{ user.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 *ngIf="selectedSection === 'wishlist'">WISHLIST</h2>
+      <div class="card list" *ngIf="selectedSection === 'wishlist'">
+        <div class="card-body">
+
+          <div class="wishlist-container">
+            <div class="wishlist-list">
+              <div class="wishlist-item" *ngIf="wishlist?.length === 0">
+                <p class="no-wishlist-items">{{this.user?.name}} has no items on his wishlist.</p>
+              </div>
+              <div class="wishlist-ll" *ngFor="let game of wishlist">
+                <div class="game_detail"> <img [src]="game.images.main" tabindex="0" (click)="verDetalhes(game._id)"
+                    (keydown.enter)="verDetalhes(game._id)">
+                  <h2 class="game_name" tabindex="0" (click)="verDetalhes(game._id)" (keydown.enter)="verDetalhes(game._id)">
+                    {{game.name}}</h2>
+                  <button id="botao-favorito" tabindex="0" (click)="updateWishlist(game)"><i
+                      class="fa-sharp fa-solid fa-heart"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+  <app-footer></app-footer>
+
+</div>
+<div *ngIf="getCookie()==false">
+  <app-error-page></app-error-page>
+</div>
+
+</html>

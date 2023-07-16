@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <div *ngIf="getCookie()==true"> 
+        
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <app-top-bar></app-top-bar>
+    <div class="game_details" *ngIf="game">
+        <div class="column_1">
+            <div class="p">
+                <p class="details_path"> <a routerLink="/dashboard">Dashboard</a> > <a routerLink="/all-games">Games</a>
+                    > {{game.game_type}}</p>
+                <div class="images">
+                    <div class="main_image"><img [src]="game.images.main" alt="{{ game.name }} Image"></div>
+                    <div class="additional">
+                        <div class="images_additional" *ngFor="let image of game.images.additional">
+                            <img [src]="image" alt="{{ game.name }} Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="column_2">
+            <div class="info">
+                <div class="game_info">
+                    <div class="game_name">
+                        <h1> {{game.name | uppercase}}</h1>
+                        <button id="botao-favorito" tabindex="0" (click)="updateWishlist(game)"><i class="fa-sharp fa-solid fa-heart"></i></button>
+                    </div>
+                    <div class="game_price">{{game.price}} €</div>
+                    <div class="btns">
+                        <div class="quantity">
+                            <div class="btn" tabindex="0"  (keydown.enter)="updateItemsCart(-1)" (click)="updateItemsCart( -1)">-</div>
+                            <div class="count">{{ num_items_on_cart }}</div>
+                            <div class="btn" tabindex="0"  (keydown.enter)="updateItemsCart(1)" (click)="updateItemsCart( 1)">+</div>
+                        </div>
+                        <button class="btn_add_to_cart" *ngIf="num_items_on_cart > 0; else otherCase"
+                            (click)="addToCart(game, num_items_on_cart)"> <i class="fas fa-shopping-cart"></i> ADD TO
+                            CART</button>
+                        <ng-template #otherCase><button class="btn_add_to_cart"
+                                style="background-color: rgb(155, 149, 149); cursor:not-allowed"><i
+                                    class="fas fa-shopping-cart"></i> ADD TO CART</button></ng-template>
+
+                        <button class="btn_buy_now" routerLink="/checkout" *ngIf="num_items_on_cart > 0; else otherCase_buy"><a >BUY NOW </a></button>
+                        <ng-template #otherCase_buy><button class="btn_add_to_cart"
+                            style="background-color: rgb(155, 149, 149); cursor:not-allowed"> BUY NOW</button></ng-template>
+                    </div>
+                </div>
+                <div class="box_details_ratings">
+                    <div class="details_ratings">
+                        <h3 id="details" tabindex="0"  (keydown.enter)="this.appearRatings()" (click)="this.appearGameDetails()">Game Details</h3>
+                        <h3 id="ratings" tabindex="0"  (keydown.enter)="this.appearRatings()" (click)="this.appearRatings()">Ratings</h3>
+                    </div>
+                    <div class="game_description" *ngIf="!appearRatings_var">
+                        <span>{{game.description}}</span><br>
+                        <span>Game Type: {{game.game_type}}</span><br>
+                        <span>Platform: {{game.platform}}</span><br>
+                        <span>This game is available in idioms: {{game.idioms}}</span><br>
+                        <span *ngIf="game.images.video!=null" >You can watch the game's trailer by clicking <a href="{{game.images.video}}" style="color: rgb(94, 165, 219); text-decoration: underline">here</a></span>
+                    </div>
+                    <div class="game_rating" *ngIf="appearRatings_var">
+                        <span>Average Rating: </span>{{game.avarageRating}}
+                        <app-rate_game [game]="game"></app-rate_game>
+                        <app-ratings *ngIf="game" [game]="game"></app-ratings>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <app-footer></app-footer>
+</body>
+     </div> 
+     <div *ngIf="getCookie()==false">
+        <app-error-page></app-error-page>
+    </div> 
+</html>

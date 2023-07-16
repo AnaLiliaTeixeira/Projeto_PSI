@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="menu" *ngIf="menuAberto">
+    <div id="search-component">
+        <input #searchBox id="search-box" placeholder="Search for a user" (input)="pesquisar()">
+      </div>
+    <div class="social-container">
+      <ul *ngIf="results!=null && results.length > 0">
+        <li *ngFor="let usuario of results" class="user-info" (click)="watchDetails(usuario)" tabindex="0" (keydown.enter)="watchDetails(usuario)" (keydown.space)="watchDetails(usuario)">
+          <div class="opinion-card"><img src="{{usuario.imageProfile || 'https://drive.google.com/uc?id=1fPzNPzfZYGO-0DVo1xi2bi7QbyItNaOQ'}}" class="profile-img"/></div>
+          <div class="user-name">{{usuario.name}}</div>
+        </li>
+        
+      </ul>
+      <div *ngIf="results?.length === 0">
+        No results found
+      </div>
+    </div>
+  </div>
+  <button class='social-button' (click)="toggleMenu()">Social</button>
+
+</div>

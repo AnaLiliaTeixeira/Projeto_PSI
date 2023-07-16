@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<div *ngIf="getCookie()==true">
+    <app-top-bar></app-top-bar>
+    <body>
+        <div class="wishlistContainer">
+            <h3 class="heading">Wishlist</h3>
+            <div class="game-Items">
+                <div *ngIf="getGamesSize()==true">
+                <div *ngFor="let game of games">
+                    <div class="game_detail">           
+                        <img class="game_image" [src]="game.images.main" tabindex="0" (click)="watchDetails(game)" (keydown.enter)="watchDetails(game)">
+                        <div class="descriptions">
+                            <h2 class="game_name" tabindex="0" (click)="watchDetails(game)" (keydown.enter)="watchDetails(game)" (keydown.space)="watchDetails(game)">{{game.name}}</h2>
+                            <p>{{game.description}}.</p>
+                            <div class="classify">  
+                                <p>{{game.avarageRating}}</p>
+                                <p class="fas fa-star" style="color: #fd4;"></p>
+                            </div>
+                            <h3 style="color: red;">{{game.price}} €</h3>
+                            
+                        </div>
+                        <button id="botao-favorito" tabindex="0" (click)="removeGameFromWishlist(game)">
+                            <i style="font-size:24px" class="fa">&#xf014;</i>    
+                        </button>
+                    </div>
+                </div>
+                </div>
+                <div *ngIf="getGamesSize()==false">
+                    <h2>Wishlist is Empty</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+    <app-footer></app-footer>
+</div>
+<div *ngIf="getCookie()==false">
+    <app-error-page></app-error-page>
+</div>
+
+</html>

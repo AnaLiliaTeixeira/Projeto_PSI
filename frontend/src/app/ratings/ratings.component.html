@@ -1,0 +1,63 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="ratings-container">
+      <h3>Ratings</h3>
+      <div *ngIf="ratings.length === 0">There are no reviews for this product yet.</div>
+      <div *ngFor="let rating of visibleRatings; let i = index" class="total-rating">
+        <div class="rating-container">
+          <div class="rating-card"> <img src="{{rating.user.imageProfile || 'https://drive.google.com/uc?id=1fPzNPzfZYGO-0DVo1xi2bi7QbyItNaOQ'}}"
+              class="profile-img"></div>
+          <div class="rating">
+            <div class="user"> {{ rating.user.name }}</div>
+            <div class="rank">{{ getStars(rating.rank) }}</div>
+            <div class="message">{{ rating.message }}</div>
+          </div>
+        </div>
+        <div class="opinions-container">
+          <div *ngFor="let opinion of rating.opinion">
+            <div class="opinion-container">
+              <div class="opinion-card"><img src="{{opinion.user.imageProfile || 'https://drive.google.com/uc?id=1fPzNPzfZYGO-0DVo1xi2bi7QbyItNaOQ'}}"
+                  class="profile-img"></div>
+              <div class="opinion">
+                <div class="user">{{ opinion.user.name }}</div>
+                <div class="message-opinion">{{ opinion.message }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rating-footer">
+          <div class="likes" tabindex="0" (keydown.enter)="likeRating(rating)" (keydown.space)="likeRating(rating)"
+            (click)="likeRating(rating)">
+            <i class="fas fa-thumbs-up"></i>
+            {{ rating.likes }}
+          </div>
+          <div class="dislikes" tabindex="0" (keydown.enter)="dislikeRating(rating)"
+            (keydown.space)="dislikeRating(rating)" (click)="dislikeRating(rating)">
+            <i class="fas fa-thumbs-down"></i>
+            {{ rating.dislikes }}
+          </div>
+          <button (click)="toggleReply(i)">Reply</button>
+        </div>
+        <div class="reply-container" *ngIf="showReply[i]">
+          <textarea cols="30" maxlength="5000" placeholder="Coment..." [(ngModel)]="replyText[i]"></textarea>
+          <button (click)="submitReply(i)">Submit</button>
+        </div>
+        
+      </div>
+      <div *ngIf="ratings.length > 3">
+        <button *ngIf="visibleRatings.length < ratings.length" (click)="showMoreRatings()">Show More</button>
+        <button *ngIf="visibleRatings.length === ratings.length" (click)="showLessRatings()">Show Less</button>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

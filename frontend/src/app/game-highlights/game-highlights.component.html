@@ -1,0 +1,16 @@
+<div class="slideshow-container" tabindex="0">
+  <div class="titulo">
+    <h1>- Highlights -</h1>
+  </div>
+  <div class="slide" *ngFor="let slide of getSlides()" [ngStyle]="{ 'display': slide === slideIndex ? 'block' : 'none' }">
+    <div *ngFor="let jogo of getJogos(slide)" class="game">
+      <img [src]="jogo.images.main" [alt]="jogo.name" tabindex="0" (click)="verDetalhes(jogo)" (keydown.enter)="verDetalhes(jogo)">
+      <div class="game-details">
+        <h2>{{jogo.name}}</h2>
+      </div>
+    </div>
+  </div>
+  <a class="prev" tabindex="0" (click)="plusSlides(-1)" (keydown.enter)="plusSlides(-1)" [ngClass]="{ 'disabled': slideIndex === 1 }">&#10094;</a>
+  <a class="next" tabindex="0" (click)="plusSlides(1)" (keydown.enter)="plusSlides(1)" [ngClass]="{ 'disabled': slideIndex === numSlides }">&#10095;</a>
+  <button class="btn-view-all" tabindex="0" (click)="verTodosJogos()" (keydown.enter)="verTodosJogos()">View All Games</button>
+</div>

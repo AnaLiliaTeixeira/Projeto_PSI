@@ -1,0 +1,31 @@
+<div *ngIf="getCookie()==true">
+
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+
+  <app-top-bar></app-top-bar>
+  <body>
+    <div class="novidades-container">
+      <h1 class="novidades-titulo">ALL GAMES</h1>
+      <div class="novidades" *ngIf="jogos && jogos.length > 0">
+        <div class="jogo" *ngFor="let jogo of jogos">
+          <img src="{{jogo.images.main}}" alt="{{jogo.name}}" tabindex="0" (click)="verDetalhes(jogo)" (keydown.enter)="verDetalhes(jogo)">
+          <div class="informacoes-jogo">
+            <h2>{{jogo.name}}</h2>
+            <p>Preço: {{jogo.price}} €</p>
+            <div class="botoes-jogo">
+              <button class="botao-carrinho" tabindex="0" (click)="addToCart(jogo)"><i class="fas fa-shopping-cart"></i></button>
+              <button id="botao-favorito" tabindex="0" (click)="updateWishlist(jogo)"><i class="fa-sharp fa-solid fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </body>
+</div>
+<div *ngIf="getCookie()==false">
+  <app-error-page></app-error-page>
+</div>

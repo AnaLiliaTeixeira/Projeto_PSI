@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <div *ngIf="getCookie()==true"> 
+    
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<app-top-bar></app-top-bar>
+
+<body>
+  
+  <div class="games_searched">
+    <div class="result_text">
+      <p class="results">Search results: {{this.searchTerm}}</p>
+      <p class="result" *ngIf="games.length != 1; else otherCase">{{games.length}} results.</p>
+      <ng-template #otherCase>
+        <p class="result">{{games.length}} result.</p>
+      </ng-template>
+    </div>
+    <div class="searched" *ngIf="games.length > 0 && this.wasSearched">
+      <div class="game" *ngFor="let game of games" tabindex="0" (click)="watchDetails(game)">
+        <img src={{game.images.main}}>
+        <p class="name">{{ game.name }}</p>
+        <p class="description">{{ game.description }}</p>
+        <p class="price">{{ game.price }} €</p>
+        <p class="type">{{ game.game_type }}</p>
+      </div>
+    </div>
+    <div class="no_games_found" *ngIf="games.length == 0 && this.wasSearched">There are no games that correspond with
+      the
+      name searched.</div>
+  </div>
+  <app-footer></app-footer>
+</body>
+
+ </div> 
+ <div *ngIf="getCookie()==false">
+    <app-error-page></app-error-page>
+</div> 
+</html>

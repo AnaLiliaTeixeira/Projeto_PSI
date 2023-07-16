@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <div class="star-widget">
+        <input type="radio" name="rate" id="rate-5" tabindex="0" (click)="onStarClick(5)" (keydown.enter)="onStarClick(5)" (keydown.space)="onStarClick(5)">
+        <label for="rate-5" class="fas fa-star" tabindex="0" (keydown.enter)="onStarClick(5)"></label>
+        <input type="radio" name="rate" id="rate-4" tabindex="0" (click)="onStarClick(4)"  (keydown.enter)="onStarClick(4)" (keydown.space)="onStarClick(4)">
+        <label for="rate-4" class="fas fa-star" tabindex="0" (keydown.enter)="onStarClick(4)"></label>
+        <input type="radio" name="rate" id="rate-3" tabindex="0" (click)="onStarClick(3)"  (keydown.enter)="onStarClick(3)" (keydown.space)="onStarClick(3)">
+        <label for="rate-3" class="fas fa-star" tabindex="0" (keydown.enter)="onStarClick(3)"></label>
+        <input type="radio" name="rate" id="rate-2" tabindex="0" (click)="onStarClick(2)" (keydown.enter)="onStarClick(2)" (keydown.space)="onStarClick(2)">
+        <label for="rate-2" class="fas fa-star" tabindex="0" (keydown.enter)="onStarClick(2)"></label>
+        <input type="radio" name="rate" id="rate-1" tabindex="0" (click)="onStarClick(1)"  (keydown.enter)="onStarClick(1)" (keydown.space)="onStarClick(1)">
+        <label for="rate-1" class="fas fa-star" tabindex="0" (keydown.enter)="onStarClick(1)"></label>
+        <form (submit)="onSubmit()" tabindex="0">
+          <header></header>
+          <div class="textarea">
+            <textarea cols="30" maxlength="5000" placeholder="Describe your experience..." [(ngModel)]="review" (input)="onReviewChange($event)" [ngModelOptions]="{standalone: true}" tabindex="0"></textarea>
+          </div>
+          <div class="btn">
+            <button id="btn-submit" type="submit" tabindex="0">Submit</button>
+          </div>
+        </form>
+      </div>
+  </body>
+</html>
