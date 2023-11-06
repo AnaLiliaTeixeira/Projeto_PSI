@@ -13,22 +13,22 @@ export class RatingService {
   constructor(private http: HttpClient) { }
 
   addRating(gameId: String, rating: Rating): Observable<Game> {
-    return this.http.post<Game>(`http://appserver.alunos.di.fc.ul.pt:3061/game/${gameId}/rating`, rating);
+    return this.http.post<Game>(`http://localhost:3061/game/${gameId}/rating`, rating);
   }
 
   addOpinion(ratingId: String, opinion: Opinion): Observable<Rating> {
-    return this.http.post<Rating>(`http://appserver.alunos.di.fc.ul.pt:3061/rating/${ratingId}/opinion`, opinion);
+    return this.http.post<Rating>(`http://localhost:3061/rating/${ratingId}/opinion`, opinion);
   }
 
   getRatingById(ratingId: String): Observable<Rating> {
-    return this.http.get<Rating>(`http://appserver.alunos.di.fc.ul.pt:3061/rating/${ratingId}`);
+    return this.http.get<Rating>(`http://localhost:3061/rating/${ratingId}`);
   }
 
   getOpinionById(opinionId: String): Observable<Opinion> {
-    return this.http.get<Opinion>(`http://appserver.alunos.di.fc.ul.pt:3061/opinion/${opinionId}`);
+    return this.http.get<Opinion>(`http://localhost:3061/opinion/${opinionId}`);
   }
 
   updateRating(ratingId: string, rating: Rating): Observable<Rating> {
-    return this.http.put<Rating>(`http://appserver.alunos.di.fc.ul.pt:3061/rating/${ratingId}`, rating);
+    return this.http.put<Rating>(`http://localhost:3061/rating/${ratingId}`, rating);
   }
 }

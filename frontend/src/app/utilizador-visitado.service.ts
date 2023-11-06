@@ -12,7 +12,7 @@ export class UtilizadorVisitadoService {
   constructor(private http: HttpClient ,private cookieService: CookieService ){}
 
   getUser(token: string): Observable<Utilizador> {
-    const url = `${'http://appserver.alunos.di.fc.ul.pt:3061/utilizadorId'}/${token}`;
+    const url = `${'http://localhost:3061/utilizadorId'}/${token}`;
     return this.http.get<Utilizador>(url);
   }
 }

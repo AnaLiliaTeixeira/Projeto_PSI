@@ -29,7 +29,7 @@ export class NotificationService {
   }
 
   removeNotification(userId: string, notificationId: string): Observable<any> {
-    return this.http.delete(`http://appserver.alunos.di.fc.ul.pt:3061/utilizadorDeleteNotification/${userId}/${notificationId}`).pipe(
+    return this.http.delete(`http://localhost:3061/utilizadorDeleteNotification/${userId}/${notificationId}`).pipe(
       switchMap(() => this.updateNotifications(userId)),
       catchError((error) => {
         console.error(error);
@@ -58,7 +58,7 @@ export class NotificationService {
   }
 
   getUserNotifications(userId: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://appserver.alunos.di.fc.ul.pt:3061/utilizadorGetNotifications/${userId}`);
+    return this.http.get<any[]>(`http://localhost:3061/utilizadorGetNotifications/${userId}`);
   }
   
 }

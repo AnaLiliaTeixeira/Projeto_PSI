@@ -8,8 +8,8 @@ import { Game } from './game';
 })
 export class GameService {
 
-  private gamesUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/games';
-  private gameUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/game';
+  private gamesUrl = 'http://localhost:3061/games';
+  private gameUrl = 'http://localhost:3061/game';
 
   private searchTerm: string = '';
   private wasBought: boolean = false;

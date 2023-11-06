@@ -207,7 +207,7 @@ export class ShoppingCartComponent implements OnInit{
       return Promise.resolve(false);
     }
     console.log('isGameSelectedAsGift', selectedCartItem);
-    return this.http.get<Buy[]>(`http://appserver.alunos.di.fc.ul.pt:3061/utilizador/${this.selectedRecipientForGift}/buys`).toPromise()
+    return this.http.get<Buy[]>(`http://localhost:3061/utilizador/${this.selectedRecipientForGift}/buys`).toPromise()
       .then(buys => {
         if (buys && buys.length > 0) {
           const hasGameInBuys = buys.some(buy => buy.game.toString() === game.gameId);

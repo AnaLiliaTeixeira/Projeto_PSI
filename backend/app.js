@@ -23,7 +23,7 @@ mongoose.set('strictQuery', false);
 
 // Define the database URL to connect to.
 // const mongoDB = 'mongodb://psi011:psi011@localhost:27017/psi011?retryWrites=true&authSource=psi011';
-const mongoDB = 'mongodb://psi011:psi011@localhost:27017/psi011?retryWrites=true&authSource=psi011';
+const mongoDB = 'mongodb+srv://psi11:ola@cluster0.ykdwmz2.mongodb.net/?retryWrites=true&w=majority';
 
 
 

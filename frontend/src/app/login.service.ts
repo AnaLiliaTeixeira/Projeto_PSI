@@ -10,7 +10,7 @@ import { Utilizador } from './utilizador';
 export class LoginService {
   private login = false;
   private token: string;
-  private loginUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizador';
+  private loginUrl = 'http://localhost:3061/utilizador';
   loginStatusChanged = new EventEmitter<boolean>();
   logoutEvent = new EventEmitter<void>(); // Evento de logout
 
@@ -37,12 +37,12 @@ export class LoginService {
   }
 
   getLoginUser(token: string): Observable<Utilizador> {
-    const url = `${'http://appserver.alunos.di.fc.ul.pt:3061/utilizador'}/${token}`;
+    const url = `${'http://localhost:3061/utilizador'}/${token}`;
     return this.http.get<Utilizador>(url);
   }
 
   pesquisarUsuarios(name: String): Observable<Utilizador[]> {
-    const url = `${'http://appserver.alunos.di.fc.ul.pt:3061/search'}/${name}`;
+    const url = `${'http://localhost:3061/search'}/${name}`;
     return this.http.get<Utilizador[]>(url);
   }
 

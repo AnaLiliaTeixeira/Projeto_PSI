@@ -7,13 +7,13 @@ import { Utilizador } from './utilizador';
   providedIn: 'root'
 })
 export class FollowersService {
-  private usersUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizador';
-  private usersUrl_ = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizadorId';
+  private usersUrl = 'http://localhost:3061/utilizador';
+  private usersUrl_ = 'http://localhost:3061/utilizadorId';
   
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<Utilizador[]> {
-    const url = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizadores';
+    const url = 'http://localhost:3061/utilizadores';
     return this.http.get<Utilizador[]>(url);
   }
   

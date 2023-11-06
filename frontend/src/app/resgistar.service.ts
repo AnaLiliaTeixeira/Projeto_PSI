@@ -7,8 +7,8 @@ import { catchError } from 'rxjs';
 })
 export class ResgistarService {
 
-  private loginUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizador';
-  private loginUrl2 = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizadores';
+  private loginUrl = 'http://localhost:3061/utilizador';
+  private loginUrl2 = 'http://localhost:3061/utilizadores';
   constructor(private http: HttpClient  ){
   }
 

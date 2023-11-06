@@ -34,7 +34,7 @@ export class LibraryService {
         
       };
       for (let i = 0; i < item.quantity; i++) {
-        await this.http.post(`http://appserver.alunos.di.fc.ul.pt:3061/utilizador/${userId}/game`, { game: item.game }).toPromise();
+        await this.http.post(`http://localhost:3061/utilizador/${userId}/game`, { game: item.game }).toPromise();
       }
     }
   }
@@ -42,7 +42,7 @@ export class LibraryService {
   getUserBuys(): Observable<Buy[]> {
     const userId = this.cookieService.get('token');
     return this.http
-      .get<Buy[]>(`http://appserver.alunos.di.fc.ul.pt:3061/utilizador/${userId}/buys`)
+      .get<Buy[]>(`http://localhost:3061/utilizador/${userId}/buys`)
       .pipe(
         switchMap((buys) => {
           const gameObservables: Observable<Game>[] = [];

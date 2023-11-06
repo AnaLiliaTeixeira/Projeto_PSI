@@ -128,7 +128,7 @@ export class CartService {
       item.quantity = 1; // Definir a quantidade como 1
 
       // Atualizar o item no banco de dados
-      const url = `http://appserver.alunos.di.fc.ul.pt:3061/update-cart-item/${userId}/${gameId}`;
+      const url = `http://localhost:3061/update-cart-item/${userId}/${gameId}`;
       const payload = {
         isGift: item.isGift,
         recipientId: item.recipientId,
@@ -174,7 +174,7 @@ export class CartService {
       };
   
       try {
-        await this.http.post(`http://appserver.alunos.di.fc.ul.pt:3061/utilizador/${recipientId}/game`, { game: gift.game }).toPromise();
+        await this.http.post(`http://localhost:3061/utilizador/${recipientId}/game`, { game: gift.game }).toPromise();
   
         const messageId = '...'; // Provide the messageId value
         
@@ -183,7 +183,7 @@ export class CartService {
             message: `You got a gift from the user: ${this.user.name}!`,
             messageId: messageId // Include the messageId in the notification
           };
-          await this.http.post(`http://appserver.alunos.di.fc.ul.pt:3061/utilizadorAddNotification/${recipientId}`, notification).toPromise();
+          await this.http.post(`http://localhost:3061/utilizadorAddNotification/${recipientId}`, notification).toPromise();
         }
       } catch (error) {
         console.error(error);
@@ -192,7 +192,7 @@ export class CartService {
   }
   
   getCartItems(userId: String): Observable<CartItem[]> {
-    const url = `http://appserver.alunos.di.fc.ul.pt:3061/cart/${userId}`;
+    const url = `http://localhost:3061/cart/${userId}`;
     return this.http.get<CartItem[]>(url);
   }
 
@@ -213,7 +213,7 @@ export class CartService {
   
   
   addToCart(userId: String, gameId: any, quantity: number): void {
-    const url = `http://appserver.alunos.di.fc.ul.pt:3061/update-cart/${userId}`;
+    const url = `http://localhost:3061/update-cart/${userId}`;
     const payload = { gameId, quantity };
   
     this.http.post(url, payload).subscribe(
@@ -233,7 +233,7 @@ export class CartService {
   }
   
   removeFromCart(userId: String, gameId: any): void {
-    const url = `http://appserver.alunos.di.fc.ul.pt:3061/remove-from-cart/${userId}/${gameId}`;
+    const url = `http://localhost:3061/remove-from-cart/${userId}/${gameId}`;
   
     this.http.delete(url).subscribe(
       response => {
@@ -252,7 +252,7 @@ export class CartService {
   }
   
   clearCart(userId: string): void {
-    const url = `http://appserver.alunos.di.fc.ul.pt:3061/clear-cart/${userId}`;
+    const url = `http://localhost:3061/clear-cart/${userId}`;
   
     this.http.delete(url).subscribe(
       response => {

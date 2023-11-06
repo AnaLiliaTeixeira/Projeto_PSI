@@ -11,7 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class WishlistService {
   private loggedUser= "";
-  private usersUrl = 'http://appserver.alunos.di.fc.ul.pt:3061/utilizador';
+  private usersUrl = 'http://localhost:3061/utilizador';
 
   constructor(private http: HttpClient, private router: Router,private cookieService: CookieService,private gameService:GameService) {
     this.loggedUser=  this.cookieService.get('token');
